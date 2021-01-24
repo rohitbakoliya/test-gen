@@ -10,7 +10,7 @@ test('Random Number test', () => {
     expect(RndNumber({ max: -100 })).toBeLessThanOrEqual(-100);
 
     // [-100, 100]
-    expect(RndNumber({ min: 100, max: -100 })).toBeWithin(-100, 100);
+    expect(RndNumber({ min: 100, max: -100 })).toBeWithin(-100, 100 + 1);
 
     // floating point numbers
     expect(RndNumber({ min: 2.5000048, max: 19.504544 })).toBeNumber();
