@@ -3,7 +3,7 @@ import { INT_MAX, INT_MIN } from '../constants/constants';
 test('Random Number test', () => {
   for (let i = 0; i < 10; i++) {
     expect(RndNumber({})).toBeNumber();
-    expect(RndNumber({})).toBeWithin(INT_MIN, INT_MAX);
+    expect(RndNumber({})).toBeWithin(INT_MIN, INT_MAX + 1);
 
     expect(RndNumber({ min: 100 })).toBeGreaterThanOrEqual(100);
     expect(RndNumber({ min: -100 })).toBeGreaterThanOrEqual(-100);
