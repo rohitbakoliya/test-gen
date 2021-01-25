@@ -1,9 +1,9 @@
-import Random from '../helper/Random';
-import TreeCheck from '../helper/TreeCheck';
-import RndUnweightedTree from '../logic/trees/RndUnweightedTree';
+import Random from '../../helper/Random';
+import TreeCheck from '../../helper/TreeCheck';
+import RndUnweightedTree from '../../logic/trees/RndUnweightedTree';
 
 describe('Random Generated unweighted Tree Tests', () => {
-  const N = Random({ min: 10, max: 50 });
+  const N = Random({ min: 10, max: 100 });
   const edges = RndUnweightedTree(N);
   const tCheck = new TreeCheck(N, edges);
 
@@ -18,6 +18,18 @@ describe('Random Generated unweighted Tree Tests', () => {
     );
   });
 
+  test('should not contain any self loop', () => {
+    expect(edges).toSatisfyAll(pairs => pairs[0] !== pairs[1]);
+  });
+
+  test('should not contain any parallel edge', () => {
+    const edgeSet: Set<string> = new Set();
+    edges.forEach(edge => {
+      const [u, v] = edge;
+      edgeSet.add(`${u},${v}`);
+    });
+    expect(edgeSet.size).toEqual(N - 1);
+  });
   test('tree should be connected', () => {
     expect(tCheck.isConntected()).toBeTrue();
   });

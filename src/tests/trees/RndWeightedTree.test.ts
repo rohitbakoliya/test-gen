@@ -1,8 +1,8 @@
-import Random from '../helper/Random';
-import RndWeightedTree from '../logic/trees/RndWeightedTree';
+import Random from '../../helper/Random';
+import RndWeightedTree from '../../logic/trees/RndWeightedTree';
 
 describe('Random Generated unweighted Tree Tests', () => {
-  const N = Random({ min: 10, max: 50 });
+  const N = Random({ min: 10, max: 100 });
   const minWt = 10;
   const maxWt = 1000;
   const wtEdges = RndWeightedTree(N, minWt, maxWt);

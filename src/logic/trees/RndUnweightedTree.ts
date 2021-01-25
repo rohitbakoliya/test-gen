@@ -1,10 +1,10 @@
 import { Edge } from '../../@types/edge';
 import Random from '../../helper/Random';
 import SuffleArray from '../ShuffleArray';
-import Tree from './Tree';
+import GraphUtil from '../../helper/GraphUtil';
 
 const RndUnweightedTree = (nodes: number): Edge => {
-  const t: Tree = new Tree(nodes);
+  const t: GraphUtil = new GraphUtil(nodes);
   const p: number[] = [];
   const permutation: number[] = [];
   for (let i = 0; i < nodes; i++) {
@@ -15,6 +15,7 @@ const RndUnweightedTree = (nodes: number): Edge => {
   for (let i = 1; i < nodes; i++) {
     t.addEdge(permutation[i] + 1, permutation[p[i]] + 1);
   }
+  t.suffleEdges();
   return t.edges;
 };
 

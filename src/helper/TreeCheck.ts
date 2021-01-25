@@ -5,6 +5,7 @@ class TreeCheck {
   adj: Array<Array<number>>;
   vis: Array<boolean>;
   haveCycle: boolean;
+
   constructor(nodes: number, edges: Edge) {
     this.nodes = nodes;
     this.vis = new Array(nodes + 1).fill(false);
