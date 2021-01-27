@@ -2,9 +2,9 @@
   "name": "test-gen",
   "version": "1.0.0",
   "description": "",
-  "main": ".bin/index.js",
+  "main": "bin/index.js",
   "bin": {
-    "test-gen": ".bin/index.js"
+    "test-gen": "bin/index.js"
   },
   "scripts": {
     "start": "npm run build && node bin/index.js",
@@ -25,12 +25,13 @@
   },
   "lint-staged": {
     "./src/**/*.ts": [
-      "npm run lf",
-      "git add"
+      "npm run lf"
     ]
   },
   "keywords": [
     "test-generator",
+    "cli",
+    "testing-cli",
     "testing",
     "generator",
     "test-case",

@@ -70,10 +70,29 @@ export const validateFraction = (value: string): string | boolean => {
 /**
  * to validate filename
  */
-export const validateFileName = (value: string, answers: any): string | boolean => {
+export const validateFileName = (value: string): string | boolean => {
   const pass = value.match(/[\w\s-.]+/);
-  if (pass && !existsSync(process.cwd() + answers.fileName + '.txt')) {
-    return true;
+  if (pass) {
+    if (!existsSync(value + '.txt')) {
+      return true;
+    }
+    return `File ${value}.txt already exists!`;
   }
   return 'Please enter a valid file name';
+};
+
+/**
+ * to validate regular expression
+ */
+export const validateRegex = (value: string): string | boolean => {
+  let isValid = value.length !== 0;
+  try {
+    RegExp(value);
+  } catch (e) {
+    isValid = false;
+  }
+  if (isValid) {
+    return true;
+  }
+  return 'Please enter valid regular expression';
 };
