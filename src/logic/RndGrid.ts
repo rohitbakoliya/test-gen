@@ -2,7 +2,7 @@ import Random from '../helper/Random';
 import RndNumber from './RndNumber';
 import RndString from './RndString';
 
-export interface Rnd2dGridParams {
+export interface RndGridParams {
   minDim: [number, number];
   maxDim: [number, number];
   // for array of strings or patterns
@@ -10,14 +10,14 @@ export interface Rnd2dGridParams {
   // for array of numbers
   range?: [number, number];
 }
-export type Grid = (rnd2dGridParams: Rnd2dGridParams) => Array<Array<number | string>>;
+export type RndGridType = (rndGridParams: RndGridParams) => Array<Array<number | string>>;
 
 /**
  * Random 2D grid generator either with regex or numeric range
  * @returns 2D grid within provided dimention range
  */
 
-const Rnd2dGrid: Grid = ({ minDim, maxDim, pattern, range }) => {
+const RndGrid: RndGridType = ({ minDim, maxDim, pattern, range }) => {
   const [minRow, minCol] = minDim;
   const [maxRow, maxCol] = maxDim;
   const row = Random({ min: minRow, max: maxRow });
@@ -41,4 +41,4 @@ const Rnd2dGrid: Grid = ({ minDim, maxDim, pattern, range }) => {
   return arr;
 };
 
-export default Rnd2dGrid;
+export default RndGrid;

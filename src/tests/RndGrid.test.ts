@@ -1,14 +1,14 @@
-import Rnd2dGrid from '../logic/Rnd2dGrid';
+import RndGrid from '../logic/RndGrid';
 
 describe('Random array tests', () => {
   test('should return empty array', () => {
-    const result = Rnd2dGrid({ minDim: [0, 0], maxDim: [0, 0] });
+    const result = RndGrid({ minDim: [0, 0], maxDim: [0, 0] });
     expect(result).toBeArray();
     expect(result).toBeArrayOfSize(0);
   });
   const minDim: [number, number] = [2, 10];
   const maxDim: [number, number] = [100, 400];
-  const result = Rnd2dGrid({ minDim, maxDim, pattern: /Alice|Bob/ });
+  const result = RndGrid({ minDim, maxDim, pattern: /Alice|Bob/ });
   const size = result.length;
   test('Pattern => should return array of correct size', () => {
     expect(result).toBeArray();
@@ -23,7 +23,7 @@ describe('Random array tests', () => {
   });
 
   const range: [number, number] = [-10, 50];
-  const result1 = Rnd2dGrid({ minDim, maxDim, range });
+  const result1 = RndGrid({ minDim, maxDim, range });
   const size1 = result1.length;
   test('Range => should return array of correct size', () => {
     expect(result1).toBeArray();

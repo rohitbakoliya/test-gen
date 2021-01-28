@@ -1,12 +1,12 @@
 import Random from '../helper/Random';
 import { INT_MAX, INT_MIN } from '../constants/constants';
 
-interface NumberParams {
+export interface NumberParams {
   min?: number;
   max?: number;
 }
 
-type RndRange = (params: NumberParams) => number;
+export type RndRange = (params: NumberParams) => number;
 
 /**
  * generate an int32 random number in an optional [from, to] range
