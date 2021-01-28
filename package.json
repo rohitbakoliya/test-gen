@@ -30,12 +30,14 @@
   },
   "keywords": [
     "test-generator",
+    "test-gen",
     "cli",
     "testing-cli",
     "testing",
-    "generator",
-    "test-case",
-    "competitive-programming"
+    "stress-testing",
+    "test-cases",
+    "competitive-programming",
+    "competitive-coding"
   ],
   "repository": {
     "type": "git",
