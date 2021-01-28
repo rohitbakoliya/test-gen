@@ -78,6 +78,7 @@
   },
   "dependencies": {
     "inquirer": "^7.3.3",
+    "ora": "^5.3.0",
     "randexp": "^0.5.3"
   }
 }

@@ -4,22 +4,24 @@ import exportFile from '../utils/exportFile';
 import { arrayQuestion, arrayPatternQuestions, arrayRangeQuestion } from '../utils/questions';
 
 const ArrayPrompt = async (testCases: number, fileName: string): Promise<void> => {
-  inquirer.prompt(arrayQuestion).then(async answers => {
-    const rows = parseInt(answers.rows);
-    const cols = parseInt(answers.cols);
-    if (answers.arrayGenType === 'Using Regular Expression') {
-      ArrayPatternPrompt(testCases, fileName, rows, cols);
-    } else {
-      ArrayRangePrompt(testCases, fileName, rows, cols);
-    }
-  });
+  inquirer
+    .prompt(arrayQuestion)
+    .then(async (answers: { minSize: string; maxSize: string; arrayGenType: string }) => {
+      const minSize = parseInt(answers.minSize);
+      const maxSize = parseInt(answers.maxSize);
+      if (answers.arrayGenType === 'Using Regular Expression') {
+        ArrayPatternPrompt(testCases, fileName, minSize, maxSize);
+      } else {
+        ArrayRangePrompt(testCases, fileName, minSize, maxSize);
+      }
+    });
 };
 
 const ArrayPatternPrompt = async (
   testCases: number,
   fileName: string,
-  rows: number,
-  cols: number
+  minSize: number,
+  maxSize: number
 ): Promise<void> => {
   inquirer.prompt(arrayPatternQuestions).then(answers => {
     const pattern = RegExp(answers.pattern);
@@ -27,15 +29,15 @@ const ArrayPatternPrompt = async (
       testCases,
       fileName,
       func: RndArray,
-      params: { dim: [rows, cols], pattern },
+      params: { minSize, maxSize, pattern },
     });
   });
 };
 const ArrayRangePrompt = async (
   testCases: number,
   fileName: string,
-  rows: number,
-  cols: number
+  minSize: number,
+  maxSize: number
 ): Promise<void> => {
   inquirer.prompt(arrayRangeQuestion).then(answers => {
     const min = parseInt(answers.min);
@@ -44,7 +46,7 @@ const ArrayRangePrompt = async (
       testCases,
       fileName,
       func: RndArray,
-      params: { dim: [rows, cols], range: [min, max] },
+      params: { minSize, maxSize, range: [min, max] },
     });
   });
 };

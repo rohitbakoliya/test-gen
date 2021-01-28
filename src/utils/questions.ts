@@ -3,8 +3,9 @@ import {
   validateWholePosNumber,
   validateFileName,
   validateRegex,
+  validateDimention,
 } from './validators';
-import { INT_MAX, INT_MIN } from '../constants/constants';
+import { INT_MAX } from '../constants/constants';
 export const initialQuestions = [
   {
     type: 'input',
@@ -38,15 +39,15 @@ export const numberQuestion = [
   {
     type: 'input',
     name: 'min',
-    message: 'Minimum Possible value for Number',
-    default: () => `${INT_MIN}`,
+    message: 'Minimum Possible value of Number',
+    default: () => `0`,
     validate: validateWholeBigNumber,
   },
   {
     type: 'input',
     name: 'max',
     default: () => `${INT_MAX}`,
-    message: 'Maximum Possible value for Number',
+    message: 'Maximum Possible value of Number',
     validate: validateWholeBigNumber,
   },
 ];
@@ -63,16 +64,35 @@ export const stringQuestion = [
 export const arrayQuestion = [
   {
     type: 'input',
-    name: 'rows',
-    default: () => '1',
-    message: 'Enter Number of rows',
+    name: 'minSize',
+    message: 'Enter minmimum size of an Array',
     validate: validateWholePosNumber,
   },
   {
     type: 'input',
-    name: 'cols',
-    message: 'Enter Number of columns',
+    name: 'maxSize',
+    message: 'Enter maximum size of an Array',
     validate: validateWholePosNumber,
+  },
+  {
+    type: 'list',
+    name: 'arrayGenType',
+    message: 'How do you want to generate array?',
+    choices: ['Using Regular Expression', 'Using Number Range'],
+  },
+];
+export const gridQuestion = [
+  {
+    type: 'input',
+    name: 'minDim',
+    message: 'Enter minimum dimention of grid [comma separated]',
+    validate: validateDimention,
+  },
+  {
+    type: 'input',
+    name: 'maxDim',
+    message: 'Enter maximum dimention of grid [comma separated]',
+    validate: validateDimention,
   },
   {
     type: 'list',
@@ -93,7 +113,7 @@ export const permutationArrayQuestion = [
   },
   {
     type: 'input',
-    name: 'N',
+    name: 'maxSize',
     message: 'Enter maximum size of Permutation Array',
     validate: validateWholePosNumber,
   },
