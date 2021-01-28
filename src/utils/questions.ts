@@ -87,8 +87,14 @@ export const arrayRangeQuestion = numberQuestion;
 export const permutationArrayQuestion = [
   {
     type: 'input',
+    name: 'minSize',
+    message: 'Enter minimum size of Permutation Array',
+    validate: validateWholePosNumber,
+  },
+  {
+    type: 'input',
     name: 'N',
-    message: 'Enter Permutation array size',
+    message: 'Enter maximum size of Permutation Array',
     validate: validateWholePosNumber,
   },
 ];
