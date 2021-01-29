@@ -1,12 +1,15 @@
-import Random from '../../helper/Random';
 import RndDirectedWeighted from '../../logic/graphs/RndDirectedWeighted';
 
 describe('Random Generated Directed Unweighted Graph Tests', () => {
-  const N = Random({ min: 1, max: 100 });
-  const E = Random({ min: 1, max: (N * (N - 1)) / 2 });
+  const N = 101;
+  const E = 550;
   const minWt = 10;
   const maxWt = 1000;
-  const wtEdges = RndDirectedWeighted(N, E, minWt, maxWt);
+  const wtEdges = RndDirectedWeighted({
+    nodesRange: [N, N],
+    edgesRange: [E, E],
+    wtRange: [minWt, maxWt],
+  });
 
   test('should return exact E edges', () => {
     expect(wtEdges).toBeArray();

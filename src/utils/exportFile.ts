@@ -1,14 +1,30 @@
 import ora from 'ora';
-
 import { createWriteStream } from 'fs';
 import { stringify } from './stringify';
+
 import { RndRange } from '../logic/RndNumber';
 import { RndStringType } from '../logic/RndString';
 import { RndArrayType } from '../logic/RndArray';
 import { PermutationType } from '../logic/RndPermutation';
 import { RndGridType } from '../logic/RndGrid';
+import { RndWeightedTreeType } from '../logic/trees/RndWeightedTree';
+import { RndUnweightedTreeType } from '../logic/trees/RndUnweightedTree';
+import { RndUndirectedUnWeightedType } from '../logic/graphs/RndUndirectedUnweighted';
+import { RndDirectedUnweightedType } from '../logic/graphs/RndDirectedUnweighted';
+import { RndDirectedWeightedType } from '../logic/graphs/RndDirectedWeighted';
 
-type FileFunc = RndRange | RndArrayType | RndStringType | PermutationType | RndGridType;
+type FileFunc =
+  | RndRange
+  | RndArrayType
+  | RndStringType
+  | PermutationType
+  | RndGridType
+  | RndWeightedTreeType
+  | RndUnweightedTreeType
+  | RndUndirectedUnWeightedType
+  | RndDirectedUnweightedType
+  | RndDirectedWeightedType;
+
 interface FileParams {
   testCases: number;
   fileName: string;

@@ -99,10 +99,10 @@ export const validateRegex: validator = value => {
   return 'Please enter valid regular expression';
 };
 
-export const validateDimention: validator = value => {
+export const validateRange: validator = value => {
   const pass = value.match(/^(0|[1-9]\d{0,6})\s*,{1}\s*(0|[1-9]\d{0,6})$/);
   if (pass) {
     return true;
   }
-  return 'Please enter correct Dimention';
+  return 'Please enter correct Range';
 };

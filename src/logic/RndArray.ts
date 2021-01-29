@@ -22,7 +22,7 @@ const RndArray: RndArrayType = ({ maxSize, minSize, pattern, range }) => {
   const arr: Array<number | string> = Array.from(Array(size));
   for (let i = 0; i < size; i++) {
     if (pattern !== undefined) {
-      arr[i] = RndString(pattern);
+      arr[i] = RndString({ pattern });
     } else {
       if (range === undefined) {
         throw new Error('Either pattern or range must be provided');

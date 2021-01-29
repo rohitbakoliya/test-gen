@@ -1,10 +1,9 @@
-import Random from '../../helper/Random';
 import TreeCheck from '../../helper/TreeCheck';
 import RndUnweightedTree from '../../logic/trees/RndUnweightedTree';
 
 describe('Random Generated unweighted Tree Tests', () => {
-  const N = Random({ min: 10, max: 100 });
-  const edges = RndUnweightedTree(N);
+  const N = 100;
+  const edges = RndUnweightedTree({ nodesRange: [N, N] });
   const tCheck = new TreeCheck(N, edges);
 
   test('should return N-1 edges', () => {

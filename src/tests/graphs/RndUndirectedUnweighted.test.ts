@@ -1,10 +1,9 @@
-import Random from '../../helper/Random';
 import RndUndirectedUnWeighted from '../../logic/graphs/RndUndirectedUnweighted';
 
 describe('Random Generated Undirected Unweighted Graph Tests', () => {
-  const N = Random({ min: 1, max: 100 });
-  const E = Random({ min: 1, max: (N * (N - 1)) / 2 });
-  const edges = RndUndirectedUnWeighted(N, E);
+  const N = 100;
+  const E = 500;
+  const edges = RndUndirectedUnWeighted({ nodesRange: [N, N], edgesRange: [E, E] });
 
   test('should return exact E edges', () => {
     expect(edges).toBeArray();

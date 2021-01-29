@@ -27,7 +27,7 @@ const RndGrid: RndGridType = ({ minDim, maxDim, pattern, range }) => {
   for (let i = 0; i < row; i++) {
     for (let j = 0; j < col; j++) {
       if (pattern !== undefined) {
-        arr[i][j] = RndString(pattern);
+        arr[i][j] = RndString({ pattern });
       } else {
         if (range === undefined) {
           throw new Error('Either pattern or range must be provided');

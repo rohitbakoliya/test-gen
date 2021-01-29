@@ -3,9 +3,10 @@ import {
   validateWholePosNumber,
   validateFileName,
   validateRegex,
-  validateDimention,
+  validateRange,
 } from './validators';
 import { INT_MAX } from '../constants/constants';
+
 export const initialQuestions = [
   {
     type: 'input',
@@ -31,7 +32,7 @@ export const initialQuestions = [
     type: 'list',
     name: 'type',
     message: 'Choose type of test cases',
-    choices: ['Number', 'String', 'Array', 'Permutation Array', 'Tree', 'Graph'],
+    choices: ['Number', 'String', 'Array', 'Permutation Array', 'Grid', 'Tree', 'Graph'],
   },
 ];
 
@@ -86,13 +87,13 @@ export const gridQuestion = [
     type: 'input',
     name: 'minDim',
     message: 'Enter minimum dimention of grid [comma separated]',
-    validate: validateDimention,
+    validate: validateRange,
   },
   {
     type: 'input',
     name: 'maxDim',
     message: 'Enter maximum dimention of grid [comma separated]',
-    validate: validateDimention,
+    validate: validateRange,
   },
   {
     type: 'list',
@@ -118,5 +119,68 @@ export const permutationArrayQuestion = [
     validate: validateWholePosNumber,
   },
 ];
-export const treeQuestion = [];
-export const graphQuestion = [];
+export const treeQuestion = [
+  {
+    type: 'list',
+    name: 'treeType',
+    message: 'Type of tree',
+    choices: ['Weighted Tree', 'Unweighted Tree'],
+  },
+];
+
+export const wtreeQuestion = [
+  {
+    type: 'input',
+    name: 'nodesRange',
+    message: 'Enter the nodes range [separated by comma]',
+    validate: validateRange,
+  },
+  {
+    type: 'input',
+    name: 'wtRange',
+    message: 'Enter the weight range [separated by comma]',
+    validate: validateRange,
+  },
+];
+
+export const utreeQuestion = [wtreeQuestion[0]];
+
+export const graphQuestion = [
+  {
+    type: 'list',
+    name: 'graphType',
+    message: 'Type of tree',
+    choices: [
+      'Directed Weighted Graph',
+      'Directed Unweighted Graph',
+      'Undirected Unweighted Graph',
+    ],
+  },
+];
+
+export const uuGraphQuestion = [
+  {
+    type: 'input',
+    name: 'nodesRange',
+    message: 'Enter the nodes range [separated by comma]',
+    validate: validateRange,
+  },
+  {
+    type: 'input',
+    name: 'edgesRange',
+    message: 'Enter the edges range [separated by comma]',
+    validate: validateRange,
+  },
+];
+
+export const duGraphQuestion = uuGraphQuestion;
+
+export const dwGraphQuestion = [
+  uuGraphQuestion[0],
+  {
+    type: 'input',
+    name: 'wtRange',
+    message: 'Enter the weight range [separated by comma]',
+    validate: validateRange,
+  },
+];

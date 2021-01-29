@@ -1,13 +1,17 @@
 import RandExp from 'randexp';
 
-export type RndStringType = (pattern: RegExp | string) => string;
+export interface RndStringParams {
+  pattern: RegExp | string;
+}
+
+export type RndStringType = (rndStringParams: RndStringParams) => string;
 
 /**
  * generate random string using regex
- * @param {RegExp|string} pattern
- * @returns {string} random generated string by given regex
+ * @param pattern
+ * @returns  random generated string by given regex
  */
-const RndString: RndStringType = pattern => {
+const RndString: RndStringType = ({ pattern }) => {
   return new RandExp(pattern).gen();
 };
 

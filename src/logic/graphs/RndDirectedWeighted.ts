@@ -2,11 +2,25 @@ import { Edge, WtEdge } from '../../@types/edge';
 import Random from '../../helper/Random';
 import RndDirectedUnweighted from './RndDirectedUnweighted';
 
-const RndDirectedWeighted = (nodes: number, E: number, minWt: number, maxWt: number): WtEdge => {
-  const edges: Edge = RndDirectedUnweighted(nodes, E);
+export interface RndDirectedWeightedParams {
+  nodesRange: [number, number];
+  edgesRange: [number, number];
+  wtRange: [number, number];
+}
+
+export type RndDirectedWeightedType = (
+  rndDirectedWeightedParams: RndDirectedWeightedParams
+) => WtEdge;
+
+/**
+ * Generates Random directed weighted Graph
+ * @returns weight-edge set
+ */
+const RndDirectedWeighted: RndDirectedWeightedType = ({ nodesRange, edgesRange, wtRange }) => {
+  const edges: Edge = RndDirectedUnweighted({ nodesRange, edgesRange });
   const wtEdges: WtEdge = [];
   edges.forEach(edge => {
-    const rndWt = Random({ max: maxWt, min: minWt });
+    const rndWt = Random({ max: wtRange[1], min: wtRange[0] });
     wtEdges.push([...edge, rndWt]);
   });
   return wtEdges;

@@ -3,7 +3,19 @@ import Random from '../../helper/Random';
 import SuffleArray from '../ShuffleArray';
 import GraphUtil from '../../helper/GraphUtil';
 
-const RndUnweightedTree = (nodes: number): Edge => {
+export interface RndUnweightedTreeParams {
+  nodesRange: [number, number];
+}
+
+export type RndUnweightedTreeType = (rndUnweightedTreeParams: RndUnweightedTreeParams) => Edge;
+
+/**
+ * Generates Random unweighted Tree
+ * @param nodesRange node range [minNodes, MaxNodes]
+ * @returns edge set
+ */
+const RndUnweightedTree: RndUnweightedTreeType = ({ nodesRange }) => {
+  const nodes = Random({ min: nodesRange[0], max: nodesRange[1] });
   const t: GraphUtil = new GraphUtil(nodes);
   const p: number[] = [];
   const permutation: number[] = [];
