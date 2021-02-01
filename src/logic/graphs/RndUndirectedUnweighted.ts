@@ -7,9 +7,16 @@ export interface RndUndirectedUnWeightedParams {
   edgesRange: [number, number];
 }
 
+export interface RndUndirectedUnWeightedReturns {
+  result: Edge;
+  nodes: number;
+  edges: number;
+  output: string;
+}
+
 export type RndUndirectedUnWeightedType = (
   rndUndirectedUnWeightedParams: RndUndirectedUnWeightedParams
-) => Edge;
+) => RndUndirectedUnWeightedReturns;
 
 /**
  * Generates Random undirected unweighted Graph
@@ -19,7 +26,10 @@ const RndUndirectedUnWeighted: RndUndirectedUnWeightedType = ({ nodesRange, edge
   const nodes = Random({ max: nodesRange[1], min: nodesRange[0] });
   // max edges need to be fixed
   // i.e E = N * (N - 1) / 2
-  const E = Random({ max: Math.min(edgesRange[1], (nodes * (nodes - 1)) / 2), min: edgesRange[0] });
+  const edges = Random({
+    max: Math.min(edgesRange[1], (nodes * (nodes - 1)) / 2),
+    min: edgesRange[0],
+  });
 
   const uug: GraphUtil = new GraphUtil(nodes);
 
@@ -27,7 +37,7 @@ const RndUndirectedUnWeighted: RndUndirectedUnWeightedType = ({ nodesRange, edge
 
   // to find u, v pair
   const range = { min: 1, max: nodes };
-  for (let i = 0; i < E; i++) {
+  for (let i = 0; i < edges; i++) {
     let u = Random(range);
     let v = Random(range);
 
@@ -40,6 +50,17 @@ const RndUndirectedUnWeighted: RndUndirectedUnWeightedType = ({ nodesRange, edge
   }
   uug.suffleEdges();
 
-  return uug.edges;
+  // creating output string for graphs
+  let output = `${nodes} ${edges}\n`;
+  uug.edges.forEach(function (edge) {
+    output += edge.join(' ') + '\n';
+  });
+
+  return {
+    result: uug.edges,
+    nodes,
+    edges,
+    output,
+  };
 };
 export default RndUndirectedUnWeighted;

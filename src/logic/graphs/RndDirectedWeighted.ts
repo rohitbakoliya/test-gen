@@ -1,4 +1,4 @@
-import { Edge, WtEdge } from '../../@types/edge';
+import { WtEdge } from '../../@types/edge';
 import Random from '../../helper/Random';
 import RndDirectedUnweighted from './RndDirectedUnweighted';
 
@@ -8,21 +8,39 @@ export interface RndDirectedWeightedParams {
   wtRange: [number, number];
 }
 
+export interface RndUndirectedUnWeightedReturns {
+  result: WtEdge;
+  nodes: number;
+  edges: number;
+  output: string;
+}
+
 export type RndDirectedWeightedType = (
   rndDirectedWeightedParams: RndDirectedWeightedParams
-) => WtEdge;
+) => RndUndirectedUnWeightedReturns;
 
 /**
  * Generates Random directed weighted Graph
  * @returns weight-edge set
  */
 const RndDirectedWeighted: RndDirectedWeightedType = ({ nodesRange, edgesRange, wtRange }) => {
-  const edges: Edge = RndDirectedUnweighted({ nodesRange, edgesRange });
+  const { result, edges, nodes } = RndDirectedUnweighted({ nodesRange, edgesRange });
   const wtEdges: WtEdge = [];
-  edges.forEach(edge => {
+  result.forEach(edge => {
     const rndWt = Random({ max: wtRange[1], min: wtRange[0] });
     wtEdges.push([...edge, rndWt]);
   });
-  return wtEdges;
+
+  // creating output for graphs
+  let output = `${nodes} ${edges}\n`;
+  wtEdges.forEach(function (wtEdge) {
+    output += wtEdge.join(' ') + '\n';
+  });
+  return {
+    result: wtEdges,
+    nodes,
+    edges,
+    output,
+  };
 };
 export default RndDirectedWeighted;

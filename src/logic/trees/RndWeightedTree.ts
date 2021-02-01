@@ -7,7 +7,14 @@ export interface RndWeightedTreeParams {
   wtRange: [number, number];
 }
 
-export type RndWeightedTreeType = (rndWeightedTreeParams: RndWeightedTreeParams) => WtEdge;
+export interface RndWeightedTreeReturns {
+  result: WtEdge;
+  nodes: number;
+  output: string;
+}
+export type RndWeightedTreeType = (
+  rndWeightedTreeParams: RndWeightedTreeParams
+) => RndWeightedTreeReturns;
 
 /**
  * Generates Random weighted Tree
@@ -17,12 +24,19 @@ export type RndWeightedTreeType = (rndWeightedTreeParams: RndWeightedTreeParams)
  */
 
 const RndWeightedTree: RndWeightedTreeType = ({ nodesRange, wtRange }) => {
-  const edges = RndUnweightedTree({ nodesRange });
+  const { result: edges, nodes } = RndUnweightedTree({ nodesRange });
   const wtEdges: WtEdge = [];
+
+  let output = nodes + '\n';
   edges.forEach(edge => {
     const rndWt = Random({ max: wtRange[1], min: wtRange[0] });
     wtEdges.push([...edge, rndWt]);
+    output += wtEdges.join(' ') + '\n';
   });
-  return wtEdges;
+  return {
+    result: wtEdges,
+    nodes,
+    output,
+  };
 };
 export default RndWeightedTree;

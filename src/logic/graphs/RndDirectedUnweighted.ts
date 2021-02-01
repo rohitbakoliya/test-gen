@@ -7,9 +7,16 @@ export interface RndDirectedUnweightedParams {
   edgesRange: [number, number];
 }
 
+export interface RndDirectedUnweigtedReturns {
+  result: Edge;
+  nodes: number;
+  edges: number;
+  output: string;
+}
+
 export type RndDirectedUnweightedType = (
   rndDirectedUnweightedParams: RndDirectedUnweightedParams
-) => Edge;
+) => RndDirectedUnweigtedReturns;
 
 /**
  * Generates Random directed unweighted Graph
@@ -19,14 +26,17 @@ const RndDirectedUnweighted: RndDirectedUnweightedType = ({ nodesRange, edgesRan
   const nodes = Random({ max: nodesRange[1], min: nodesRange[0] });
   // max edges need to be fixed
   // i.e E = N * (N - 1) / 2
-  const E = Random({ max: Math.min(edgesRange[1], (nodes * (nodes - 1)) / 2), min: edgesRange[0] });
+  const edges = Random({
+    max: Math.min(edgesRange[1], (nodes * (nodes - 1)) / 2),
+    min: edgesRange[0],
+  });
 
   const dug: GraphUtil = new GraphUtil(nodes);
 
   const set: Set<string> = new Set();
 
   const range = { min: 1, max: nodes };
-  for (let i = 0; i < E; i++) {
+  for (let i = 0; i < edges; i++) {
     let u = Random(range);
     let v = Random(range);
 
@@ -39,6 +49,17 @@ const RndDirectedUnweighted: RndDirectedUnweightedType = ({ nodesRange, edgesRan
   }
   dug.suffleEdges();
 
-  return dug.edges;
+  // creating output string for graphs
+  let output = `${nodes} ${edges}\n`;
+
+  dug.edges.forEach(function (edge) {
+    output += edge.join(' ') + '\n';
+  });
+  return {
+    result: dug.edges,
+    edges,
+    nodes,
+    output,
+  };
 };
 export default RndDirectedUnweighted;

@@ -7,7 +7,15 @@ export interface RndUnweightedTreeParams {
   nodesRange: [number, number];
 }
 
-export type RndUnweightedTreeType = (rndUnweightedTreeParams: RndUnweightedTreeParams) => Edge;
+export interface RndUnweightedTreeReturns {
+  result: Edge;
+  nodes: number;
+  output: string;
+}
+
+export type RndUnweightedTreeType = (
+  rndUnweightedTreeParams: RndUnweightedTreeParams
+) => RndUnweightedTreeReturns;
 
 /**
  * Generates Random unweighted Tree
@@ -28,7 +36,17 @@ const RndUnweightedTree: RndUnweightedTreeType = ({ nodesRange }) => {
     t.addEdge(permutation[i] + 1, permutation[p[i]] + 1);
   }
   t.suffleEdges();
-  return t.edges;
+
+  let output = nodes + '\n';
+  t.edges.forEach(function (edge) {
+    output += edge.join(' ') + '\n';
+  });
+
+  return {
+    result: t.edges,
+    nodes,
+    output,
+  };
 };
 
 export default RndUnweightedTree;
