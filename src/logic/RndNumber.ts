@@ -6,12 +6,23 @@ export interface NumberParams {
   max?: number;
 }
 
-export type RndRange = (params: NumberParams) => number;
+export interface NumberReturns {
+  output: string;
+  result: number;
+}
+
+export type RndNumberType = (params: NumberParams) => NumberReturns;
 
 /**
  * generate an int32 random number in an optional [from, to] range
  */
-const RndNumber: RndRange = ({ min = INT_MIN, max = INT_MAX }) =>
-  Random({ min: Math.min(min, max), max: Math.max(min, max) });
+const RndNumber: RndNumberType = ({ min = INT_MIN, max = INT_MAX }) => {
+  const result = Random({ min: Math.min(min, max), max: Math.max(min, max) });
+  const output = result + '\n';
+  return {
+    result,
+    output,
+  };
+};
 
 export default RndNumber;

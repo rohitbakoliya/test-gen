@@ -1,4 +1,4 @@
-import { Edge } from '../../@types/edge';
+import { Edges } from '../../@types/edge';
 import GraphUtil from '../../helper/GraphUtil';
 import Random from '../../helper/Random';
 
@@ -8,7 +8,7 @@ export interface RndUndirectedUnWeightedParams {
 }
 
 export interface RndUndirectedUnWeightedReturns {
-  result: Edge;
+  result: Edges;
   nodes: number;
   edges: number;
   output: string;

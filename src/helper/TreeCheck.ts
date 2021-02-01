@@ -1,4 +1,4 @@
-import { Edge } from '../@types/edge';
+import { Edges } from '../@types/edge';
 
 class TreeCheck {
   nodes: number;
@@ -6,7 +6,7 @@ class TreeCheck {
   vis: Array<boolean>;
   haveCycle: boolean;
 
-  constructor(nodes: number, edges: Edge) {
+  constructor(nodes: number, edges: Edges) {
     this.nodes = nodes;
     this.vis = new Array(nodes + 1).fill(false);
     this.adj = Array.from(Array(nodes + 1), () => []);

@@ -1,8 +1,7 @@
 import ora from 'ora';
 import { createWriteStream } from 'fs';
-import { stringify } from './stringify';
 
-import { RndRange } from '../logic/RndNumber';
+import { RndNumberType } from '../logic/RndNumber';
 import { RndStringType } from '../logic/RndString';
 import { RndArrayType } from '../logic/RndArray';
 import { PermutationType } from '../logic/RndPermutation';
@@ -14,7 +13,7 @@ import { RndDirectedUnweightedType } from '../logic/graphs/RndDirectedUnweighted
 import { RndDirectedWeightedType } from '../logic/graphs/RndDirectedWeighted';
 
 type FileFunc =
-  | RndRange
+  | RndNumberType
   | RndArrayType
   | RndStringType
   | PermutationType
@@ -42,13 +41,13 @@ const exportFile = (fileParams: FileParams): void => {
   const spinner = ora('Writing test cases').start();
 
   if (testCases === 0) {
-    const chunk = stringify(func(params));
+    const { output: chunk } = func(params);
     stream.write(chunk);
   } else {
     const tcs = testCases + '\n';
     stream.write(tcs);
     for (let i = 0; i < testCases; i++) {
-      const chunk = stringify(func(params));
+      const { output: chunk } = func(params);
       stream.write(chunk);
     }
   }

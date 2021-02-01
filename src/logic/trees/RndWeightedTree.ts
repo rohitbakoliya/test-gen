@@ -1,4 +1,4 @@
-import { WtEdge } from '../../@types/edge';
+import { WtEdge, WtEdges } from '../../@types/edge';
 import Random from '../../helper/Random';
 import RndUnweightedTree from './RndUnweightedTree';
 
@@ -8,7 +8,7 @@ export interface RndWeightedTreeParams {
 }
 
 export interface RndWeightedTreeReturns {
-  result: WtEdge;
+  result: WtEdges;
   nodes: number;
   output: string;
 }
@@ -25,13 +25,14 @@ export type RndWeightedTreeType = (
 
 const RndWeightedTree: RndWeightedTreeType = ({ nodesRange, wtRange }) => {
   const { result: edges, nodes } = RndUnweightedTree({ nodesRange });
-  const wtEdges: WtEdge = [];
+  const wtEdges: WtEdges = [];
 
   let output = nodes + '\n';
   edges.forEach(edge => {
     const rndWt = Random({ max: wtRange[1], min: wtRange[0] });
-    wtEdges.push([...edge, rndWt]);
-    output += wtEdges.join(' ') + '\n';
+    const wtEdge: WtEdge = [...edge, rndWt];
+    wtEdges.push(wtEdge);
+    output += wtEdge.join(' ') + '\n';
   });
   return {
     result: wtEdges,

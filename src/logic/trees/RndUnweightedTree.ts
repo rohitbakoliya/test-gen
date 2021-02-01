@@ -1,4 +1,4 @@
-import { Edge } from '../../@types/edge';
+import { Edges } from '../../@types/edge';
 import Random from '../../helper/Random';
 import SuffleArray from '../ShuffleArray';
 import GraphUtil from '../../helper/GraphUtil';
@@ -8,7 +8,7 @@ export interface RndUnweightedTreeParams {
 }
 
 export interface RndUnweightedTreeReturns {
-  result: Edge;
+  result: Edges;
   nodes: number;
   output: string;
 }

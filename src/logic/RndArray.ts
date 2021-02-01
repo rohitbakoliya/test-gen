@@ -31,14 +31,14 @@ const RndArray: RndArrayType = ({ maxSize, minSize, pattern, range }) => {
 
   for (let i = 0; i < size; i++) {
     if (pattern !== undefined) {
-      arr[i] = RndString({ pattern });
+      arr[i] = RndString({ pattern }).result;
       output += arr[i] + '\n';
     } else {
       if (range === undefined) {
         throw new Error('Either pattern or range must be provided');
       } else {
         const [min, max] = range;
-        arr[i] = RndNumber({ min, max });
+        arr[i] = RndNumber({ min, max }).result;
         output += arr[i] + ' ';
       }
     }

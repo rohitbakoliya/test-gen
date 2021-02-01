@@ -1,6 +1,7 @@
 import {
-  validateWholeBigNumber,
-  validateWholePosNumber,
+  validateBigNumber,
+  validateWholeNumber,
+  validateNaturalNumber,
   validateFileName,
   validateRegex,
   validateRange,
@@ -26,7 +27,7 @@ export const initialQuestions = [
     name: 'testCases',
     message: 'Enter the number of test cases',
     default: () => '0',
-    validate: validateWholePosNumber,
+    validate: validateWholeNumber,
   },
   {
     type: 'list',
@@ -42,14 +43,14 @@ export const numberQuestion = [
     name: 'min',
     message: 'Minimum Possible value of Number',
     default: () => `0`,
-    validate: validateWholeBigNumber,
+    validate: validateBigNumber,
   },
   {
     type: 'input',
     name: 'max',
     default: () => `${INT_MAX}`,
     message: 'Maximum Possible value of Number',
-    validate: validateWholeBigNumber,
+    validate: validateBigNumber,
   },
 ];
 
@@ -67,13 +68,13 @@ export const arrayQuestion = [
     type: 'input',
     name: 'minSize',
     message: 'Enter minmimum size of an Array',
-    validate: validateWholePosNumber,
+    validate: validateNaturalNumber,
   },
   {
     type: 'input',
     name: 'maxSize',
     message: 'Enter maximum size of an Array',
-    validate: validateWholePosNumber,
+    validate: validateNaturalNumber,
   },
   {
     type: 'list',
@@ -110,13 +111,13 @@ export const permutationArrayQuestion = [
     type: 'input',
     name: 'minSize',
     message: 'Enter minimum size of Permutation Array',
-    validate: validateWholePosNumber,
+    validate: validateNaturalNumber,
   },
   {
     type: 'input',
     name: 'maxSize',
     message: 'Enter maximum size of Permutation Array',
-    validate: validateWholePosNumber,
+    validate: validateNaturalNumber,
   },
 ];
 export const treeQuestion = [
@@ -176,7 +177,7 @@ export const uuGraphQuestion = [
 export const duGraphQuestion = uuGraphQuestion;
 
 export const dwGraphQuestion = [
-  uuGraphQuestion[0],
+  ...uuGraphQuestion,
   {
     type: 'input',
     name: 'wtRange',

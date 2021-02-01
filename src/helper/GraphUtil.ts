@@ -1,12 +1,13 @@
 import Random from './Random';
 import SuffleArray from '../logic/ShuffleArray';
+import { Edges } from '../@types/edge';
 
 /**
  * Utility Class for Graph and tree generation
  */
 class GraphUtil {
   nodes: number;
-  edges: Array<[number, number]>;
+  edges: Edges;
 
   constructor(nodes: number) {
     this.nodes = nodes;
