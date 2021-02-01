@@ -11,7 +11,13 @@ export interface RndArrayParams {
   range?: [number, number];
 }
 
-export type RndArrayType = (rndArrayParams: RndArrayParams) => Array<number | string>;
+export interface RndArrayReturns {
+  output: string;
+  size: number;
+  result: Array<number | string>;
+}
+
+export type RndArrayType = (rndArrayParams: RndArrayParams) => RndArrayReturns;
 
 /**
  * Generates Random array of `string` | `number`
@@ -20,19 +26,32 @@ export type RndArrayType = (rndArrayParams: RndArrayParams) => Array<number | st
 const RndArray: RndArrayType = ({ maxSize, minSize, pattern, range }) => {
   const size = Random({ max: maxSize, min: minSize });
   const arr: Array<number | string> = Array.from(Array(size));
+
+  let output = size + '\n';
+
   for (let i = 0; i < size; i++) {
     if (pattern !== undefined) {
       arr[i] = RndString({ pattern });
+      output += arr[i] + '\n';
     } else {
       if (range === undefined) {
         throw new Error('Either pattern or range must be provided');
       } else {
         const [min, max] = range;
         arr[i] = RndNumber({ min, max });
+        output += arr[i] + ' ';
       }
     }
   }
-  return arr;
+  if (range !== undefined) {
+    output += '\n';
+  }
+
+  return {
+    size,
+    result: arr,
+    output,
+  };
 };
 
 export default RndArray;
