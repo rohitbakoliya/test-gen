@@ -1,6 +1,9 @@
 import { existsSync } from 'fs';
+import chalk from 'chalk';
 
 type validator = (value: string) => string | boolean;
+
+const error = chalk.red;
 
 /**
  * to validate whole positive number in range [0, 999999]
@@ -11,7 +14,7 @@ export const validateWholeNumber: validator = value => {
   if (pass) {
     return true;
   }
-  return 'Please enter a valid Number';
+  return error('Please enter a valid Number');
 };
 
 /**
@@ -22,7 +25,7 @@ export const validateWholeBigNumber: validator = value => {
   if (pass) {
     return true;
   }
-  return 'Please enter a valid Number';
+  return error('Please enter a valid Number');
 };
 
 /**
@@ -33,7 +36,7 @@ export const validateNumber: validator = value => {
   if (pass) {
     return true;
   }
-  return 'Please enter a valid Number';
+  return error('Please enter a valid Number');
 };
 
 /**
@@ -44,7 +47,7 @@ export const validateBigNumber: validator = value => {
   if (pass) {
     return true;
   }
-  return 'Please enter a valid Number';
+  return error('Please enter a valid Number');
 };
 
 /**
@@ -55,7 +58,7 @@ export const validateNaturalNumber: validator = value => {
   if (pass) {
     return true;
   }
-  return 'Please enter a valid Natural Number';
+  return error('Please enter a valid Natural Number');
 };
 
 /**
@@ -66,7 +69,7 @@ export const validateNaturalBigNumber: validator = value => {
   if (pass) {
     return true;
   }
-  return 'Please enter a valid Natural Number';
+  return error('Please enter a valid Natural Number');
 };
 
 /**
@@ -77,7 +80,7 @@ export const validatePosFraction: validator = value => {
   if (pass) {
     return true;
   }
-  return 'Please enter a valid Number';
+  return error('Please enter a valid positive Number');
 };
 
 /**
@@ -88,7 +91,7 @@ export const validateFraction: validator = value => {
   if (pass) {
     return true;
   }
-  return 'Please enter a valid Number';
+  return error('Please enter a valid Number');
 };
 
 /**
@@ -100,9 +103,9 @@ export const validateFileName: validator = value => {
     if (!existsSync(value + '.txt')) {
       return true;
     }
-    return `File ${value}.txt already exists!`;
+    return error(`File ${value}.txt already exists!`);
   }
-  return 'Please enter a valid file name';
+  return error('Please enter a valid file name');
 };
 
 /**
@@ -118,13 +121,13 @@ export const validateRegex: validator = value => {
   if (isValid) {
     return true;
   }
-  return 'Please enter valid regular expression';
+  return error('Please enter valid regular expression');
 };
 
 export const validateRange: validator = value => {
-  const pass = value.match(/^(0|[1-9]\d{0,6})\s*,{1}\s*(0|[1-9]\d{0,6})$/);
+  const pass = value.match(/^([1-9]\d{0,6})\s*,{1}\s*([1-9]\d{0,6})$/);
   if (pass) {
     return true;
   }
-  return 'Please enter correct Range';
+  return error('Please enter correct Range');
 };

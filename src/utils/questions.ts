@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 import {
   validateBigNumber,
   validateWholeNumber,
@@ -16,7 +18,7 @@ export const initialQuestions = [
     default: () => 'input',
     transformer: (fileName: any, _: any, flags: any) => {
       if (flags.isFinal) {
-        return fileName + '.txt';
+        return chalk.cyan(fileName + '.txt');
       }
       return fileName;
     },
