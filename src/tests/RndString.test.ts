@@ -30,11 +30,4 @@ describe('Random String tests', () => {
   test('should return expression of correct length', () => {
     expect(RndString({ pattern: /[A-Z]{5,10}/ }).result).toMatch(/^.{5,10}$/);
   });
-
-  // test('with incorrect pattern', () => {
-  //   const { result } = RndString('/$%dfa\\/');
-  //   expect(result).toBeString();
-  //   expect(result.length).toBeWithin(0, Math.max(0, result.length + 1));
-  //   expect(result).toMatch(new RegExp(result));
-  // });
 });

@@ -76,7 +76,7 @@ export const validateNaturalBigNumber: validator = value => {
  * to validate positive fractional number
  */
 export const validatePosFraction: validator = value => {
-  const pass = value.match(/^(0|[1-9]\d*)?(\.\d+)?(?<=\d)$/);
+  const pass = value.match(/^(0|[1-9]\d*)?(\.\d+)?$/);
   if (pass) {
     return true;
   }
@@ -87,7 +87,7 @@ export const validatePosFraction: validator = value => {
  * to validate both positive and negetive fractional numbers
  */
 export const validateFraction: validator = value => {
-  const pass = value.match(/^(?!-0?(\.0+)?$)-?(0|[1-9]\d*)?(\.\d+)?(?<=\d)$/);
+  const pass = value.match(/^(?!-0?(\.0+)?$)-?(\d+)?(?:\.\d+)?$/);
   if (pass) {
     return true;
   }

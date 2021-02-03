@@ -3,3 +3,5 @@ bin
 .vscode
 .eslintcache
 *.txt
+demo*.yml
+render*.gif
