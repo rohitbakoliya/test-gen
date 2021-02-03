@@ -105,7 +105,7 @@ $ test-gen
 ✔ Input file successfully created!!
 ```
 
-> 💡 To generate inputs of fix size use maximum and mimimum size limits same.
+💡 To generate inputs of fixed size, use maximum and minimum size limits same.
 
 ## 🏷 Output Formats
 ### Permutation Array

@@ -6,7 +6,7 @@ Quickly generate test cases for stress testing using interactive CLI.
 
 ## Install
 ```
-$ npm i -g test-gen
+$ npm i -g @rohitbakoliya/test-gen
 ```
 
 ## Usage
