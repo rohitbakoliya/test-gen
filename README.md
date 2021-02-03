@@ -1,5 +1,8 @@
 # 🧪 Test Generator CLI
 
+![Build](https://img.shields.io/github/workflow/status/rohitbakoliya/test-gen/CI)
+![npm](https://img.shields.io/npm/v/@rohitbakoliya/test-gen) ![NPM](https://img.shields.io/npm/l/@rohitbakoliya/test-gen)
+
 Quickly generate test cases for stress testing using interactive CLI.
 
 ![demo](./docs/demo-min.gif)
