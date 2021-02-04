@@ -1,7 +1,7 @@
 {
   "name": "@rohitbakoliya/test-gen",
   "version": "1.0.0",
-  "description": "",
+  "description": "Quickly generate test cases for stress testing using interactive CLI.",
   "main": "bin/index.js",
   "bin": {
     "test-gen": "bin/index.js"
