@@ -1,20 +1,27 @@
 # 🧪 Test Generator CLI
 
-![Build](https://img.shields.io/github/workflow/status/rohitbakoliya/test-gen/CI)
-![npm](https://img.shields.io/npm/v/@rohitbakoliya/test-gen) ![NPM](https://img.shields.io/npm/l/@rohitbakoliya/test-gen)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c94af0a71b424122a6101604f16b6d56)](https://www.codacy.com/gh/rohitbakoliya/test-gen/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rohitbakoliya/test-gen&amp;utm_campaign=Badge_Grade)
+![CI](https://img.shields.io/github/workflow/status/rohitbakoliya/test-gen/CI?logo=Github&label=CI)
+![npm](https://img.shields.io/npm/v/@rohitbakoliya/test-gen)
+![NPM](https://img.shields.io/npm/l/@rohitbakoliya/test-gen)
 
 Quickly generate test cases for stress testing using interactive CLI.
 
 ![demo](./docs/demo-min.gif)
 
 ## Install
-```
-$ npm i -g @rohitbakoliya/test-gen
+
+```bash
+npm i -g @rohitbakoliya/test-gen
+
+# or without installing it globally
+npx @rohitbakoliya/test-gen
 ```
 
 ## Usage
+
 ```
-$ test-gen
+test-gen
 ```
 
 ## Documentation
@@ -23,11 +30,11 @@ Checkout Complete Documentation [here](docs/docs.md).
 
 ## Contributing
 
-**Unit test:** 
-Unit test are written in [Jest](https://jestjs.io/). Please add a unit test for every new feature or bug fix. `npm test` to run the test suite.
+**Unit test:** Unit test are written in [Jest](https://jestjs.io/). Please add a unit test for every
+new feature or bug fix. `npm test` to run the test suite.
 
-**Documentation:**
-Add output format for every new input types.
+**Documentation:** Add output format for every new input types.
+
 ## License
 
 This project is under the MIT license.
