@@ -1,6 +1,6 @@
 {
   "name": "@rohitbakoliya/test-gen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Quickly generate test cases for stress testing using interactive CLI.",
   "main": "bin/index.js",
   "bin": {
@@ -28,6 +28,9 @@
       "npm run lf"
     ]
   },
+  "files": [
+    "bin"
+  ],
   "keywords": [
     "test-generator",
     "test-gen",
