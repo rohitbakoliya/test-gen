@@ -4,6 +4,8 @@
 ![CI](https://img.shields.io/github/workflow/status/rohitbakoliya/test-gen/CI?logo=Github&label=CI)
 ![npm](https://img.shields.io/npm/v/@rohitbakoliya/test-gen)
 ![NPM](https://img.shields.io/npm/l/@rohitbakoliya/test-gen)
+![npm](https://img.shields.io/npm/dt/@rohitbakoliya/test-gen)
+![node-current (scoped)](https://img.shields.io/node/v/@rohitbakoliya/test-gen)
 
 Quickly generate test cases for stress testing using interactive CLI.
 
